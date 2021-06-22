@@ -13,7 +13,7 @@ stages:
 - stage: Build
   displayName: "Building Web App"
   jobs:
-  - job: Building job
+  - job: Building-job
     displayName: "This is the building job"
     steps:
     - script: echo Beginning build
