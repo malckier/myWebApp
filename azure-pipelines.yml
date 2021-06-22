@@ -3,17 +3,21 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+trigger: - build-azure
+#- main
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+stages:
+- stage: Build
+  displayName: "Building Web App"
+  jobs:
+  - job: Building job
+    displayName: "This is the building job"
+    steps:
+    - script: echo Beginning build
+      displayName: 'Running build job'
+    - task: DotNetCoreCLI@2
+      inputs: 
+        command: 'build'
